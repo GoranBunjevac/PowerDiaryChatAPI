@@ -17,6 +17,13 @@ namespace PowerDiaryChat.Domain.Models
             return _events;
         }
 
+        /// <summary>
+        /// Get aggregated events
+        /// </summary>
+        /// <param name="start">Chat history start time</param>
+        /// <param name="end">Chat history end time</param>
+        /// <param name="granularity">Aggregation level</param>
+        /// <returns>Events aggregated hourly</returns>
         public List<HourlyChatEvent> GetAggregatedEvents(DateTime start, DateTime end, TimeSpan granularity)
         {
             var aggregatedChatEvents = new List<HourlyChatEvent>();
@@ -47,6 +54,12 @@ namespace PowerDiaryChat.Domain.Models
             return aggregatedChatEvents;
         }
 
+        /// <summary>
+        /// Get time slots hourly
+        /// </summary>
+        /// <param name="timestamp">Event timestamp</param>
+        /// <param name="granularity">Aggregation level</param>
+        /// <returns>Time slots by hour</returns>
         private DateTime GetTimeSlot(DateTime timestamp, TimeSpan granularity)
         {
             var ticks = timestamp.Ticks / granularity.Ticks * granularity.Ticks;

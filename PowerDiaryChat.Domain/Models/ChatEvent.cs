@@ -12,9 +12,5 @@ namespace PowerDiaryChat.Domain.Models
         public string Message { get; set; }
 
         public ChatRoomHistoryResponse ToDto() => new(Timestamp, Member, OtherMember, Type, Message);
-
-        public ChatEvent()
-        {
-        }
     }
 }

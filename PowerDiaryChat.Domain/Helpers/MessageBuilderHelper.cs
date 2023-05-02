@@ -15,7 +15,10 @@ namespace PowerDiaryChat.Domain.Helpers
         {
             var messageBuilder = new StringBuilder();
 
+            // Number of people which high-fived other people
             var people = countByUser.Keys.Count;
+
+            // Number of high-fived people
             var highFivedPeople = countByUser.Values.Distinct().Count();
 
             messageBuilder

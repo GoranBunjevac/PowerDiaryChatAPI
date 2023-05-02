@@ -8,9 +8,5 @@ namespace PowerDiaryChat.Domain.Models
         public string Message { get; set; }
 
         public ChatRoomHistoryHourlyResponse ToDto() => new(Timestamp, Message);
-
-        public HourlyChatEvent()
-        {
-        }
     }
 }

@@ -17,13 +17,14 @@ namespace PowerDiaryChat.Api.Controllers
         }
 
         /// <summary>
-        /// Method to get chat history from repository
+        /// Get chat history from repository
         /// </summary>
         /// <returns>Chat history as a list</returns>
         [HttpGet]
         [Route("chat")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(List<ChatRoomHistoryResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChatRoomHistoryResponse>), StatusCodes.Status500InternalServerError)]
         public IActionResult GetChat()
         {
             var chatHistory = _chatService.GetChatRoomHistory();
@@ -31,13 +32,14 @@ namespace PowerDiaryChat.Api.Controllers
         }
 
         /// <summary>
-        /// Method to aggregate chat history by hour
+        /// Aggregate chat history by hour
         /// </summary>
         /// <returns>Chat history aggregated by hour</returns>
         [HttpGet]
         [Route("hourly")]
         [Produces(MediaTypeNames.Application.Json)]
         [ProducesResponseType(typeof(List<ChatRoomHistoryHourlyResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(List<ChatRoomHistoryHourlyResponse>), StatusCodes.Status500InternalServerError)]
         public IActionResult GetHourlyAggregation()
         {
             var chatHistory = _chatService.GetHourlyAggregatedEvents();
